@@ -10,8 +10,7 @@
         <Menu DataContext="{Binding Menu}">
             <MenuItem Header="{DynamicResource ResourceKey=file}">
                 <MenuItem Header="{DynamicResource ResourceKey=close}" 
-                          Command="{Binding AppExitCommand}"
-                          IsEnabled="{Binding IsEnabled}"/>
+                          Command="{Binding AppExitCommand}"/>
             </MenuItem>
         </Menu>
     </Grid>
