@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetworkAdapterChecker", "NetworkAdapterChecker\NetworkAdapterChecker.csproj", "{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		PrivateDebug|Any CPU = PrivateDebug|Any CPU
+		PrivateDebug|x86 = PrivateDebug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Debug|x86.ActiveCfg = Debug|x86
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Debug|x86.Build.0 = Debug|x86
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.PrivateDebug|Any CPU.ActiveCfg = PrivateDebug|x86
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.PrivateDebug|Any CPU.Build.0 = PrivateDebug|x86
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.PrivateDebug|x86.ActiveCfg = PrivateDebug|x86
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.PrivateDebug|x86.Build.0 = PrivateDebug|x86
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{6AE525B1-EE38-46B8-B174-18B1E9CF32C8}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C789D4FD-C988-4D9B-8554-8B62060747A9}
+	EndGlobalSection
+EndGlobal

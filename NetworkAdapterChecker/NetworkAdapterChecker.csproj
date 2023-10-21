@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>10</LangVersion>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Title>NetworkAdapterChecker</Title>
+    <Version>1.0.0</Version>
+    <Authors>Taogya</Authors>
+    <Company>Taogya</Company>
+    <Description>Windowsで動作する，ネットワークアダプタ確認用画面</Description>
+    <Copyright>Taogya</Copyright>
+    <PackageProjectUrl>https://github.com/taogya/NetworkAdapterChecker</PackageProjectUrl>
+    <PackageTags>$(AssemblyName);ネットワークアダプタ確認;</PackageTags>
+    <Platforms>x86</Platforms>
+    <IsPublishable>True</IsPublishable>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <ApplicationIcon>Resources\image\network_adapter.ico</ApplicationIcon>
+    <NeutralLanguage>ja</NeutralLanguage>
+    <Configurations>Debug;Release;PrivateDebug</Configurations>
+    <PackageIcon>network_adapter.ico</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrivateDebug|x86'">
+    <DebugType>full</DebugType>
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\image\network_adapter.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\image\network_adapter.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

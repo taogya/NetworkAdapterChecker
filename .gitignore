@@ -1,0 +1,7 @@
+.vs
+NetworkAdapterChecker/obj
+NetworkAdapterChecker/bin
+
+NetworkAdapterCheckerInstaller/Release
+
+*.user
