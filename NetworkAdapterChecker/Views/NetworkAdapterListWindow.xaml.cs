@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkAdapterChecker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NetworkAdapterChecker
+namespace NetworkAdapterChecker.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// NetworkAdapterListWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NetworkAdapterListWindow : Window
     {
-        public MainWindow()
+        public NetworkAdapterListWindow()
         {
             InitializeComponent();
+            DataContext = new NetworkAdapterListViewModel();
         }
     }
 }

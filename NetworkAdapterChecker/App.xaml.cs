@@ -1,16 +1,11 @@
 ﻿using NetworkAdapterChecker.Settings;
+using NetworkAdapterChecker.Views;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace NetworkAdapterChecker
@@ -51,11 +46,6 @@ namespace NetworkAdapterChecker
         public static Mutex Mutex = new(false, App.Name);
         public static CommandOptions Options = new();
 
-        public static void GetArgument(string[] args)
-        {
-
-        }
-
         /// <summary>
         /// 重複起動しているか
         /// </summary>
@@ -78,6 +68,7 @@ namespace NetworkAdapterChecker
         /// <returns>表示する言語のResourceDictionary</returns>
         public static ResourceDictionary GetLanguage()
         {
+            // https://ja.wikipedia.org/wiki/ISO_639-1%E3%82%B3%E3%83%BC%E3%83%89%E4%B8%80%E8%A6%A7
             var cultureCode = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             return GetLanguage(cultureCode);
         }
@@ -118,6 +109,14 @@ namespace NetworkAdapterChecker
             // デバッグ用コンソールの表示
             AllocConsole();
             //Console.SetWindowSize(30, 10);
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+#else
+            // 想定外の例外を処理するイベントハンドラを登録
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+#endif
+
+#if PRIVATEDEBUG
+            //throw new Exception("CurrentDomain_UnhandledException");
 #endif
 
             // 引数の解析
@@ -128,12 +127,10 @@ namespace NetworkAdapterChecker
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-
-            // 想定外の例外を処理するイベントハンドラを登録
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
 #if PRIVATEDEBUG
-            //throw new Exception("CurrentDomain_UnhandledException");
+            Options.PrintHelp();
+            Console.WriteLine($"Command Args:");
+            foreach(string arg in e.Args) Console.WriteLine($"    {arg}");
 #endif
 
             // 重複起動の確認
@@ -142,20 +139,29 @@ namespace NetworkAdapterChecker
                 MessageBox.Show("This application is already running.", "Infomation", MessageBoxButton.OK, MessageBoxImage.Information);
                 Environment.Exit(1);
             }
+#if PRIVATEDEBUG
+            //Process.Start(Name);
+#endif
 
 
             // 言語設定
-#if PRIVATEDEBUG
-            var language = GetLanguage("ja");
-#else
             var language = GetLanguage();
-#endif
             Resources.MergedDictionaries.Add(language);
-            // 動的に変えたいときは、変えたいところに以下コード挿入
-            //Application.Current.Resources.MergedDictionaries[0] = dictionary;
+#if PRIVATEDEBUG
+            // システムで設定されている言語
+            var nowLang = Application.Current.Resources.MergedDictionaries[0];
+            Console.WriteLine($"System: {nowLang["network_adapter_checker"]}");
+            // 言語切り替え(存在しない言語)
+            nowLang = Application.Current.Resources.MergedDictionaries[0] = GetLanguage("xx");
+            Console.WriteLine($"Default: {nowLang["network_adapter_checker"]}");
+            // 英語に切り替え
+            nowLang = Application.Current.Resources.MergedDictionaries[0] = GetLanguage("en");
+            Console.WriteLine($"English: {nowLang["network_adapter_checker"]}");
+            // 日本語に切り替え
+            nowLang = Application.Current.Resources.MergedDictionaries[0] = GetLanguage("ja");
+            Console.WriteLine($"Japanese: {nowLang["network_adapter_checker"]}");
+#endif
 
-            // 初めに表示するウィンドウの開始
-            //Application.Run(new WindowSizeCheckerForm());
         }
 
         /// <summary>

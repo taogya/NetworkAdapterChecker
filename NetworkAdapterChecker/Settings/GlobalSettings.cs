@@ -8,7 +8,7 @@ namespace NetworkAdapterChecker.Settings
 {
     public static class GlobalSettings
     {
-        public static string DefaultCultureCode { get; } = "ja";
+        public static string DefaultCultureCode { get; } = "en";
 
         public static string GetLanguagePath() => GetLanguagePath(DefaultCultureCode);
         public static string GetLanguagePath(string cultureCode) => @$"Resources/language/Dictionary.{cultureCode}.xaml";
