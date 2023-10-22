@@ -6,12 +6,25 @@
         xmlns:local="clr-namespace:NetworkAdapterChecker.Views"
         mc:Ignorable="d"
         Title="NetworkAdapterListWindow" Height="450" Width="800">
-    <Grid>
-        <Menu DataContext="{Binding Menu}">
+    <StackPanel Orientation="Vertical">
+        <Menu DataContext="{Binding Menu}" Background="LightGray">
             <MenuItem Header="{DynamicResource ResourceKey=file}">
                 <MenuItem Header="{DynamicResource ResourceKey=close}" 
                           Command="{Binding AppExitCommand}"/>
             </MenuItem>
         </Menu>
-    </Grid>
+        
+        <StackPanel Orientation="Horizontal">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0">
+
+                </ListView>
+                <TextBox Grid.Column="1" />
+            </Grid>
+        </StackPanel>
+    </StackPanel>
 </Window>

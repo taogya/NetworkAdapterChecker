@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace NetworkAdapterChecker.ViewModels
 {
-    public class MainMenu : ViewModelBase
+    public class MainMenuViewModel : ViewModelBase
     {
 
         private DelegateCommand? appExitCommand;
