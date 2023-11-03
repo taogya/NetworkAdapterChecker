@@ -5,26 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkAdapterChecker.Views"
         mc:Ignorable="d"
-        Title="NetworkAdapterListWindow" Height="450" Width="800">
-    <StackPanel Orientation="Vertical">
-        <Menu DataContext="{Binding Menu}" Background="LightGray">
+        Title="NetworkAdapterListWindow" 
+        Height="500" Width="800"
+        ResizeMode="CanResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--@@@@@@@@@@ メニューバー @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+        <Menu Grid.Row="0" DataContext="{Binding Menu}">
             <MenuItem Header="{DynamicResource ResourceKey=file}">
+                <MenuItem Header="{DynamicResource ResourceKey=export}" 
+                          Command="{Binding ExportCommand}"/>
                 <MenuItem Header="{DynamicResource ResourceKey=close}" 
                           Command="{Binding AppExitCommand}"/>
             </MenuItem>
         </Menu>
-        
-        <StackPanel Orientation="Horizontal">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="8*" />
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0">
-
-                </ListView>
-                <TextBox Grid.Column="1" />
+        <!--@@@@@@@@@@ メイン領域 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+        <Grid Grid.Row="1" Margin="0,0,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5,5,5,5">
+                <Button Content="{DynamicResource update}"
+                        Command="{Binding NetworkAdaptersUpdate}"
+                        Width="100"
+                        HorizontalAlignment="Left" />
             </Grid>
-        </StackPanel>
-    </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="7*" />
+                </Grid.ColumnDefinitions>
+                <!--@@@@@@@@@@ ネットワークアダプタ一覧 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+                <ScrollViewer Grid.Column="0"
+                    HorizontalScrollBarVisibility="Disabled" 
+                    VerticalScrollBarVisibility="Visible">
+                    <ItemsControl ItemsSource="{Binding NetworkAdapterList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Command="{Binding SelectedItemCommand}"
+                                            Margin="1,1,1,1"
+                                            Background="Transparent"
+                                            CommandParameter="{Binding}" Panel.ZIndex="1">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border x:Name="Bg" Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="Bg" Property="Background" Value="#1F000000"/>
+                                                        <Setter Property="Foreground" Value="White" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <StackPanel Orientation="Vertical" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left"
+                                                    Panel.ZIndex="0"
+                                                Margin="5,5,5,5">
+                                        <TextBlock Text="{Binding NetworkAdapter.MSFT_NetAdapter.Name}"
+                                                FontSize="18" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding NetworkAdapter.MSFT_NetAdapter.DriverDescription}"
+                                                FontSize="9" 
+                                                TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <!--@@@@@@@@@@ 選択されたネットワークアダプタの詳細情報 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+                <Grid Grid.Column="1" DataContext="{Binding SelectedNetworkAdapter}">
+                    <ListView x:Name="NetworkAdapterDetail"
+                        ItemsSource="{Binding MSFT_NetAdapter}">
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="{DynamicResource property_name}"
+                                                DisplayMemberBinding="{Binding Key}" />
+                                <GridViewColumn Header="{DynamicResource property_value}"
+                                                DisplayMemberBinding="{Binding Value}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>

@@ -3,5 +3,9 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="network_adapter_checker">Network Adapter Checker</system:String>
     <system:String x:Key="file">File</system:String>
+    <system:String x:Key="export">Export</system:String>
     <system:String x:Key="close">Close</system:String>
+    <system:String x:Key="update">Update</system:String>
+    <system:String x:Key="property_name">Name</system:String>
+    <system:String x:Key="property_value">Value</system:String>
 </ResourceDictionary>

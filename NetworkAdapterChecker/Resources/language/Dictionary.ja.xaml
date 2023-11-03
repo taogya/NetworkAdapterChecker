@@ -3,5 +3,9 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="network_adapter_checker">ネットワークアダプタチェッカー</system:String>
     <system:String x:Key="file">ファイル</system:String>
+    <system:String x:Key="export">エクスポート</system:String>
     <system:String x:Key="close">閉じる</system:String>
+    <system:String x:Key="update">更新</system:String>
+    <system:String x:Key="property_name">プロパティ名</system:String>
+    <system:String x:Key="property_value">値</system:String>
 </ResourceDictionary>

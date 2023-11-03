@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetworkAdapterChecker.Settings
+namespace NetworkAdapterChecker.Models
 {
-    public static class GlobalSettings
+    public static class GlobalParameter
     {
         public static string DefaultCultureCode { get; } = "en";
 

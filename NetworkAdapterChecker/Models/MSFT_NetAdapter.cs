@@ -13,57 +13,58 @@ namespace NetworkAdapterChecker.Models
     /// </summary>
     public class MSFT_NetAdapter : CIM_NetworkPort
     {
+        public MSFT_NetAdapter() { }
         public MSFT_NetAdapter(ManagementBaseObject obj) : base(obj) 
         {
-            InterfaceDescription = (string)obj["InterfaceDescription"];
-            InterfaceName = (string)obj["InterfaceName"];
-            NetLuid = (UInt64)obj["NetLuid"];
-            InterfaceGuid = (string)obj["InterfaceGuid"];
-            InterfaceIndex = (UInt32)obj["InterfaceIndex"];
-            DeviceName = (string)obj["DeviceName"];
-            NetLuidIndex = (UInt32)obj["NetLuidIndex"];
-            Virtual = (bool)obj["Virtual"];
-            Hidden = (bool)obj["Hidden"];
-            NotUserRemovable = (bool)obj["NotUserRemovable"];
-            IMFilter = (bool)obj["IMFilter"];
-            InterfaceType = (UInt32)obj["InterfaceType"];
-            HardwareInterface = (bool)obj["HardwareInterface"];
-            WdmInterface = (bool)obj["WdmInterface"];
-            EndPointInterface = (bool)obj["EndPointInterface"];
-            iSCSIInterface = (bool)obj["iSCSIInterface"];
-            State = (UInt32)obj["State"];
-            NdisMedium = (UInt32)obj["NdisMedium"];
-            NdisPhysicalMedium = (UInt32)obj["NdisPhysicalMedium"];
-            InterfaceOperationalStatus = (UInt32)obj["InterfaceOperationalStatus"];
-            OperationalStatusDownDefaultPortNotAuthenticated = (bool)obj["OperationalStatusDownDefaultPortNotAuthenticated"];
-            OperationalStatusDownMediaDisconnected = (bool)obj["OperationalStatusDownMediaDisconnected"];
-            OperationalStatusDownInterfacePaused = (bool)obj["OperationalStatusDownInterfacePaused"];
-            OperationalStatusDownLowPowerState = (bool)obj["OperationalStatusDownLowPowerState"];
-            InterfaceAdminStatus = (UInt32)obj["InterfaceAdminStatus"];
-            MediaConnectState = (UInt32)obj["MediaConnectState"];
-            MtuSize = (UInt32)obj["MtuSize"];
-            VlanID = (UInt16)obj["VlanID"];
-            TransmitLinkSpeed = (UInt64)obj["TransmitLinkSpeed"];
-            ReceiveLinkSpeed = (UInt64)obj["ReceiveLinkSpeed"];
-            PromiscuousMode = (bool)obj["PromiscuousMode"];
-            DeviceWakeUpEnable = (bool)obj["DeviceWakeUpEnable"];
-            ConnectorPresent = (bool)obj["ConnectorPresent"];
-            MediaDuplexState = (UInt32)obj["MediaDuplexState"];
-            DriverDate = (string)obj["DriverDate"];
-            DriverDateData = (UInt64)obj["DriverDateData"];
-            DriverVersionString = (string)obj["DriverVersionString"];
-            DriverName = (string)obj["DriverName"];
-            DriverDescription = (string)obj["DriverDescription"];
-            MajorDriverVersion = (UInt16)obj["MajorDriverVersion"];
-            MinorDriverVersion = (UInt16)obj["MinorDriverVersion"];
-            DriverMajorNdisVersion = (byte)obj["DriverMajorNdisVersion"];
-            DriverMinorNdisVersion = (byte)obj["DriverMinorNdisVersion"];
-            PnPDeviceID = (string)obj["PnPDeviceID"];
-            DriverProvider = (string)obj["DriverProvider"];
-            ComponentID = (string)obj["ComponentID"];
-            LowerLayerInterfaceIndices = (UInt32[])obj["LowerLayerInterfaceIndices"];
-            HigherLayerInterfaceIndices = (UInt32[])obj["HigherLayerInterfaceIndices"];
-            AdminLocked = (bool)obj["AdminLocked"];
+            InterfaceDescription = GetValue<string>(obj, "InterfaceDescription");
+            InterfaceName = GetValue<string>(obj, "InterfaceName");
+            NetLuid = GetValue<ulong>(obj, "NetLuid");
+            InterfaceGuid = GetValue<string>(obj, "InterfaceGuid");
+            InterfaceIndex = GetValue<uint>(obj, "InterfaceIndex");
+            DeviceName = GetValue<string>(obj, "DeviceName");
+            NetLuidIndex = GetValue<uint>(obj, "NetLuidIndex");
+            Virtual = GetValue<bool>(obj, "Virtual");
+            Hidden = GetValue<bool>(obj, "Hidden");
+            NotUserRemovable = GetValue<bool>(obj, "NotUserRemovable");
+            IMFilter = GetValue<bool>(obj, "IMFilter");
+            InterfaceType = (uint)obj["InterfaceType"];
+            HardwareInterface = GetValue<bool>(obj, "HardwareInterface");
+            WdmInterface = GetValue<bool>(obj, "WdmInterface");
+            EndPointInterface = GetValue<bool>(obj, "EndPointInterface");
+            iSCSIInterface = GetValue<bool>(obj, "iSCSIInterface");
+            State = GetValue<uint>(obj, "State");
+            NdisMedium = GetValue<uint>(obj, "NdisMedium");
+            NdisPhysicalMedium = GetValue<uint>(obj, "NdisPhysicalMedium");
+            InterfaceOperationalStatus = GetValue<uint>(obj, "InterfaceOperationalStatus");
+            OperationalStatusDownDefaultPortNotAuthenticated = GetValue<bool>(obj, "OperationalStatusDownDefaultPortNotAuthenticated");
+            OperationalStatusDownMediaDisconnected = GetValue<bool>(obj, "OperationalStatusDownMediaDisconnected");
+            OperationalStatusDownInterfacePaused = GetValue<bool>(obj, "OperationalStatusDownInterfacePaused");
+            OperationalStatusDownLowPowerState = GetValue<bool>(obj, "OperationalStatusDownLowPowerState");
+            InterfaceAdminStatus = GetValue<uint>(obj, "InterfaceAdminStatus");
+            MediaConnectState = GetValue<uint>(obj, "MediaConnectState");
+            MtuSize = GetValue<uint>(obj, "MtuSize");
+            VlanID = GetValue<ushort>(obj, "VlanID");
+            TransmitLinkSpeed = GetValue<ulong>(obj, "TransmitLinkSpeed");
+            ReceiveLinkSpeed = GetValue<ulong>(obj, "ReceiveLinkSpeed");
+            PromiscuousMode = GetValue<bool>(obj, "PromiscuousMode");
+            DeviceWakeUpEnable = GetValue<bool>(obj, "DeviceWakeUpEnable");
+            ConnectorPresent = GetValue<bool>(obj, "ConnectorPresent");
+            MediaDuplexState = GetValue<uint>(obj, "MediaDuplexState");
+            DriverDate = GetValue<string>(obj, "DriverDate");
+            DriverDateData = GetValue<ulong>(obj, "DriverDateData");
+            DriverVersionString = GetValue<string>(obj, "DriverVersionString");
+            DriverName = GetValue<string>(obj, "DriverName");
+            DriverDescription = GetValue<string>(obj, "DriverDescription");
+            MajorDriverVersion = GetValue<ushort>(obj, "MajorDriverVersion");
+            MinorDriverVersion = GetValue<ushort>(obj, "MinorDriverVersion");
+            DriverMajorNdisVersion = GetValue<byte>(obj, "DriverMajorNdisVersion");
+            DriverMinorNdisVersion = GetValue<byte>(obj, "DriverMinorNdisVersion");
+            PnPDeviceID = GetValue<string>(obj, "PnPDeviceID");
+            DriverProvider = GetValue<string>(obj, "DriverProvider");
+            ComponentID = GetValue<string>(obj, "ComponentID");
+            LowerLayerInterfaceIndices = GetValue<uint[]>(obj, "LowerLayerInterfaceIndices");
+            HigherLayerInterfaceIndices = GetValue<uint[]>(obj, "HigherLayerInterfaceIndices");
+            AdminLocked = GetValue<bool>(obj, "AdminLocked");
         }
 
         /// <summary>
@@ -71,112 +72,112 @@ namespace NetworkAdapterChecker.Models
         /// アクセスタイプ: 読み取り専用  <br/>
         /// 「ifDesc」または表示名とも呼ばれるインターフェイスの説明は、インストール中にネットワーク アダプターに割り当てられる一意の名前です。この名前は変更できず、ネットワーク アダプタがアンインストールされない限り保持されます。
         /// </summary>
-        public string InterfaceDescription { get; }
+        public string? InterfaceDescription { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークインターフェースのローカルで一意な識別子。InterfaceType_NetluidIndex 形式で。例: イーサネット_2。
         /// </summary>
-        public string InterfaceName { get; }
+        public string? InterfaceName { get; } = null;
 
         /// <summary>
         /// データ型: uint64  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// 64 ビット数値としてのネットワーク インターフェイスのローカル一意識別子 (LUID)。
         /// </summary>
-        public UInt64 NetLuid { get; }
+        public ulong? NetLuid { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークインターフェイスのGUID。
         /// </summary>
-        public string InterfaceGuid { get; }
+        public string? InterfaceGuid { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークインターフェースを識別するインデックス。このインデックス値は、ネットワーク アダプタが無効になってから有効になると変更される可能性があるため、永続的であると見なすべきではありません。
         /// </summary>
-        public UInt32 InterfaceIndex { get; }
+        public uint? InterfaceIndex { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// このアダプターのデバイス オブジェクトの名前。
         /// </summary>
-        public string DeviceName { get; }
+        public string? DeviceName { get; } = null;
 
         /// <summary>
         /// /// データ型: uint32  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// インストール時にネットワーク アダプターに割り当てられたインデックス。このインデックスはインターフェイス タイプの範囲内で一意です。
         /// </summary>
-        public UInt32 NetLuidIndex { get; }
+        public uint? NetLuidIndex { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターは物理ネットワーク カードをエミュレートします。
         /// </summary>
-        public bool Virtual { get; }
+        public bool? Virtual { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターは非表示になっており、どのユーザー インターフェイスにも表示されません。
         /// </summary>
-        public bool Hidden { get; }
+        public bool? Hidden { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ユーザーはネットワーク アダプターを削除できません。
         /// </summary>
-        public bool NotUserRemovable { get; }
+        public bool? NotUserRemovable { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターは、中間フィルター コンポーネントのアダプター エッジです。
         /// </summary>
-        public bool IMFilter { get; }
+        public bool? IMFilter { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// Internet Assigned Names Authority (IANA) によって定義されたインターフェイス タイプ。
         /// </summary>
-        public UInt32 InterfaceType { get; }
+        public uint? InterfaceType { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターのインターフェイスは、ハードウェア デバイスによって提供されます。
         /// </summary>
-        public bool HardwareInterface { get; }
+        public bool? HardwareInterface { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプタの下位レベルのインターフェイスは、USB などの WDM バス ドライバです。
         /// </summary>
-        public bool WdmInterface { get; }
+        public bool? WdmInterface { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// このインターフェイスはエンドポイント デバイスであり、ネットワークに接続する真のネットワーク インターフェイスではありません。
         /// </summary>
-        public bool EndPointInterface { get; }
+        public bool? EndPointInterface { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// このインターフェイスは iSCSI ソフトウェア イニシエータによって使用され、ページング パス内にあります。
         /// </summary>
-        public bool iSCSIInterface { get; }
+        public bool? iSCSIInterface { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -187,7 +188,7 @@ namespace NetworkAdapterChecker.Models
         /// 始めました(2)  <br/>
         /// 無効(3)
         /// </summary>
-        public UInt32 State { get; }
+        public uint? State { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -214,7 +215,7 @@ namespace NetworkAdapterChecker.Models
         /// WiMAX (18)  <br/>
         /// 知財(19) 
         /// </summary>
-        public UInt32 NdisMedium { get; }
+        public uint? NdisMedium { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -241,7 +242,7 @@ namespace NetworkAdapterChecker.Models
         /// 有線接続指向の WAN (18)  <br/>
         /// その他(19)
         /// </summary>
-        public UInt32 NdisPhysicalMedium { get; }
+        public uint? NdisPhysicalMedium { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -255,35 +256,35 @@ namespace NetworkAdapterChecker.Models
         /// 存在しません(6)  <br/>
         /// 下層ダウン(7)
         /// </summary>
-        public UInt32 InterfaceOperationalStatus { get; }
+        public uint? InterfaceOperationalStatus { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークアダプターのデフォルトポートは認証されていません。
         /// </summary>
-        public bool OperationalStatusDownDefaultPortNotAuthenticated { get; }
+        public bool? OperationalStatusDownDefaultPortNotAuthenticated { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターはメディア接続状態ではありません。
         /// </summary>
-        public bool OperationalStatusDownMediaDisconnected { get; }
+        public bool? OperationalStatusDownMediaDisconnected { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターは一時停止状態です。
         /// </summary>
-        public bool OperationalStatusDownInterfacePaused { get; }
+        public bool? OperationalStatusDownInterfacePaused { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターは低電力状態です。
         /// </summary>
-        public bool OperationalStatusDownLowPowerState { get; }
+        public bool? OperationalStatusDownLowPowerState { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -293,7 +294,7 @@ namespace NetworkAdapterChecker.Models
         /// ダウン(2)  <br/>
         /// テスト(3)
         /// </summary>
-        public UInt32 InterfaceAdminStatus { get; }
+        public uint? InterfaceAdminStatus { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -303,165 +304,165 @@ namespace NetworkAdapterChecker.Models
         /// 接続済み(1)  <br/>
         /// 切断されました(2)
         /// </summary>
-        public UInt32 MediaConnectState { get; }
+        public uint? MediaConnectState { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターがサポートする最大転送単位 (MTU) サイズ。この値には、リンク層ヘッダーのサイズは含まれません。
         /// </summary>
-        public UInt32 MtuSize { get; }
+        public uint? MtuSize { get; } = null;
 
         /// <summary>
         /// データ型: uint16  <br/>
         /// アクセスタイプ: 読み取り/書き込み  <br/>
         /// ネットワーク アダプタに設定された仮想 LAN 識別子。
         /// </summary>
-        public UInt16 VlanID { get; }
+        public ushort? VlanID { get; } = null;
 
         /// <summary>
         /// データ型: uint64  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ビット/秒単位の送信リンク速度。
         /// </summary>
-        public UInt64 TransmitLinkSpeed { get; }
+        public ulong? TransmitLinkSpeed { get; } = null;
 
         /// <summary>
         /// データ型: uint64  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// 受信リンク速度 (ビット/秒)。
         /// </summary>
-        public UInt64 ReceiveLinkSpeed { get; }
+        public ulong? ReceiveLinkSpeed { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// インターフェイスが無差別モードの場合は TRUE、そうでない場合は FALSE。
         /// </summary>
-        public bool PromiscuousMode { get; }
+        public bool? PromiscuousMode { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターが Wake-on-LAN 機能をサポートしており、その機能が有効になっている場合は TRUE、有効になっていない場合は FALSE。
         /// </summary>
-        public bool DeviceWakeUpEnable { get; }
+        public bool? DeviceWakeUpEnable { get; } = null;
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプターにコネクタが存在するかどうかを示します。この値は、これが物理アダプターの場合は TRUE に設定され、物理アダプターではない場合は FALSE に設定されます。
         /// </summary>
-        public bool ConnectorPresent { get; }
+        public bool? ConnectorPresent { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークアダプターのメディア二重状態。
         /// </summary>
-        public UInt32 MediaDuplexState { get; }
+        public uint? MediaDuplexState { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// YYYY-MM-DD 形式のネットワーク アダプター ドライバーの日付。
         /// </summary>
-        public string DriverDate { get; }
+        public string? DriverDate { get; } = null;
 
         /// <summary>
         /// データ型: uint64  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// FILETIME 形式のネットワーク アダプター ドライバーの日付。これは、1601 年 1 月 1 日 (UTC) からの 100 ナノ秒間隔の数を表す 64 ビット値です。
         /// </summary>
-        public UInt64 DriverDateData { get; }
+        public ulong? DriverDateData { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプター ドライバーのバージョンを表す文字列。
         /// </summary>
-        public string DriverVersionString { get; }
+        public string? DriverVersionString { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークアダプタードライバーの名前。
         /// </summary>
-        public string DriverName { get; }
+        public string? DriverName { get; } = null;
 
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークアダプタードライバーの説明。
-        public string DriverDescription { get; }
+        public string? DriverDescription { get; } = null;
 
         /// <summary>
         /// データ型: uint16  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプター ドライバーのメジャー バージョン。
         /// </summary>
-        public UInt16 MajorDriverVersion { get; }
+        public ushort? MajorDriverVersion { get; } = null;
 
         /// <summary>
         /// データ型: uint16  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプター ドライバーのマイナー バージョン。
         /// </summary>
-        public UInt16 MinorDriverVersion { get; }
+        public ushort? MinorDriverVersion { get; } = null;
 
         /// <summary>
         /// データ型: uint8  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプター ドライバーが準拠する NDIS のメジャー バージョン。
         /// </summary>
-        public byte DriverMajorNdisVersion { get; }
+        public byte? DriverMajorNdisVersion { get; } = null;
 
         /// <summary>
         /// データ型: uint8  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワーク アダプター ドライバーが準拠する NDIS のマイナー バージョン。
         /// </summary>
-        public byte DriverMinorNdisVersion { get; }
+        public byte? DriverMinorNdisVersion { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// プラグ アンド プレイ デバイス ID。
         /// </summary>
-        public string PnPDeviceID { get; }
+        public string? PnPDeviceID { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ドライバープロバイダー名。
         /// </summary>
-        public string DriverProvider { get; }
+        public string? DriverProvider { get; } = null;
 
         /// <summary>
         /// データ型:文字列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// PnP コンポーネント ID。ネットワーク アダプターのハードウェア ID とも呼ばれます。
         /// </summary>
-        public string ComponentID { get; }
+        public string? ComponentID { get; } = null;
 
         /// <summary>
         /// データ型: uint32配列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// 下位層インターフェイスのインターフェイス インデックス。
         /// </summary>
-        public UInt32[] LowerLayerInterfaceIndices { get; }
+        public uint[]? LowerLayerInterfaceIndices { get; }
 
         /// <summary>
         /// データ型: uint32配列  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// 上位層インターフェイスのインターフェイス インデックス。
         /// </summary>
-        public UInt32[] HigherLayerInterfaceIndices { get; }
+        public uint[]? HigherLayerInterfaceIndices { get; }
 
         /// <summary>
         /// データ型:ブール値  <br/>
         /// アクセスタイプ: 読み取り専用  <br/>
         /// ネットワークアダプターの管理状態。True の場合、ネットワーク アダプターはロックされており、アダプターのロックが解除されない限り、そのプロパティの多くは変更できません。
         /// </summary>
-        public bool AdminLocked { get; }
+        public bool? AdminLocked { get; } = null;
     }
 }

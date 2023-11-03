@@ -13,14 +13,15 @@ namespace NetworkAdapterChecker.Models
     /// </summary>
     public class CIM_LogicalPort : CIM_LogicalDevice
     {
+        public CIM_LogicalPort() { }
         public CIM_LogicalPort(ManagementBaseObject obj) : base(obj) 
         {
-            Speed = (UInt64)obj["Speed"];
-            MaxSpeed = (UInt64)obj["MaxSpeed"];
-            RequestedSpeed = (UInt64)obj["RequestedSpeed"];
-            UsageRestriction = (UInt16)obj["UsageRestriction"];
-            PortType = (UInt16)obj["PortType"];
-            OtherPortType = (string)obj["OtherPortType"];
+            Speed = GetValue<ulong>(obj, "Speed");
+            MaxSpeed = GetValue<ulong>(obj, "MaxSpeed");
+            RequestedSpeed = GetValue<ulong>(obj, "RequestedSpeed");
+            UsageRestriction = GetValue<ushort>(obj, "UsageRestriction");
+            PortType = GetValue<ushort>(obj, "PortType");
+            OtherPortType = GetValue<string>(obj, "OtherPortType");
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: 単位 ("ビット/秒")、 PUnit ("bit/second")  <br/>
         /// ポートの帯域幅 (1 秒あたりのビット数)。
         /// </summary>
-        public virtual UInt64 Speed { get; }
+        public virtual ulong? Speed { get; } = null;
 
         /// <summary>
         /// データ型: uint64  <br/>
@@ -37,7 +38,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: 単位 ("ビット/秒")、 PUnit ("bit/second")  <br/>
         /// ポートの最大帯域幅 (1 秒あたりのビット数)。
         /// </summary>
-        public virtual UInt64 MaxSpeed { get; }
+        public virtual ulong? MaxSpeed { get; } = null;
 
         /// <summary>
         /// データ型: uint64  <br/>
@@ -45,7 +46,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: 単位 ("ビット/秒")、 ModelCorrespondence ("CIM_LogicalPort。Speed")、 PUnit ("bit/second")  <br/>
         /// ポートの要求された帯域幅 (ビット/秒)。 実際の帯域幅は、 Speed プロパティで報告されます。
         /// </summary>
-        public virtual UInt64 RequestedSpeed { get; }
+        public virtual ulong? RequestedSpeed { get; } = null;
 
         /// <summary>
         /// データ型: uint16  <br/>
@@ -56,7 +57,7 @@ namespace NetworkAdapterChecker.Models
         /// バックエンドのみ (3)  <br/>
         /// 制限なし (4)
         /// </summary>
-        public virtual UInt16 UsageRestriction { get; }
+        public virtual ushort? UsageRestriction { get; } = null;
 
         /// <summary>
         /// データ型: uint16  <br/>
@@ -69,7 +70,7 @@ namespace NetworkAdapterChecker.Models
         /// DMTF 予約済み (3..15999)  <br/>
         /// ベンダー予約済み (16000..65535)
         /// </summary>
-        public virtual UInt16 PortType { get; }
+        public virtual ushort? PortType { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
@@ -77,6 +78,6 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: ModelCorrespondence ("CIM_LogicalPort.PortType")  <br/>
         /// PortType が Other ("1") に設定されている場合のモジュールの種類について説明します。
         /// </summary>
-        public virtual string OtherPortType { get; }
+        public virtual string? OtherPortType { get; } = null;
     };
 }

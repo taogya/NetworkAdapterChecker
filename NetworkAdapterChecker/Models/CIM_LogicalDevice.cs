@@ -13,22 +13,23 @@ namespace NetworkAdapterChecker.Models
     /// </summary>
     public class CIM_LogicalDevice : CIM_LogicalElement
     {
+        public CIM_LogicalDevice() { }
         public CIM_LogicalDevice(ManagementBaseObject obj) : base(obj) 
         {
-            Availability = (UInt16)obj["Availability"];
-            ConfigManagerErrorCode = (UInt32)obj["ConfigManagerErrorCode"];
-            ConfigManagerUserConfig = (bool)obj["ConfigManagerUserConfig"];
-            CreationClassName = (string)obj["CreationClassName"];
-            DeviceID = (string)obj["DeviceID"];
-            PowerManagementCapabilities = (UInt16[])obj["PowerManagementCapabilities"];
-            ErrorCleared = (bool)obj["ErrorCleared"];
-            ErrorDescription = (string)obj["ErrorDescription"];
-            LastErrorCode = (UInt32)obj["LastErrorCode"];
-            PNPDeviceID = (string)obj["PNPDeviceID"];
-            PowerManagementSupported = (bool)obj["PowerManagementSupported"];
-            StatusInfo = (UInt16)obj["StatusInfo"];
-            SystemCreationClassName = (string)obj["SystemCreationClassName"];
-            SystemName = (string)obj["SystemName"];
+            Availability = GetValue<ushort>(obj, "Availability");
+            ConfigManagerErrorCode = GetValue<uint>(obj, "ConfigManagerErrorCode");
+            ConfigManagerUserConfig = GetValue<bool>(obj, "ConfigManagerUserConfig");
+            CreationClassName = GetValue<string>(obj, "CreationClassName");
+            DeviceID = GetValue<string>(obj, "DeviceID");
+            PowerManagementCapabilities = GetValue<ushort[]>(obj, "PowerManagementCapabilities");
+            ErrorCleared = GetValue<bool>(obj, "ErrorCleared");
+            ErrorDescription = GetValue<string>(obj, "ErrorDescription");
+            LastErrorCode = GetValue<uint>(obj, "LastErrorCode");
+            PNPDeviceID = GetValue<string>(obj, "PNPDeviceID");
+            PowerManagementSupported = GetValue<bool>(obj, "PowerManagementSupported");
+            StatusInfo = GetValue<ushort>(obj, "StatusInfo");
+            SystemCreationClassName = GetValue<string>(obj, "SystemCreationClassName");
+            SystemName = GetValue<string>(obj, "SystemName");
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace NetworkAdapterChecker.Models
         /// 休止 ( 21) <br/>
         /// デバイスは静かです。
         /// </summary>
-        public virtual UInt16 Availability { get; }
+        public virtual ushort? Availability { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
@@ -106,7 +107,7 @@ namespace NetworkAdapterChecker.Models
         /// このデバイスは、別のデバイスが使用している割り込み要求 (IRQ) リソースを使用しています。 (30)  <br/>
         /// Windows はこのデバイスに必要なドライバーを読み込むことができないため、このデバイスが正しく動作していません。 (31)
         /// </summary>
-        public virtual UInt32 ConfigManagerErrorCode { get; }
+        public virtual uint? ConfigManagerErrorCode { get; } = null;
 
         /// <summary>
         /// データ型: boolean  <br/>
@@ -114,7 +115,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: スキーマ ("Win32")  <br/>
         /// TRUE の場合、デバイスはユーザー定義の構成を使用します。
         /// </summary>
-        public virtual bool ConfigManagerUserConfig { get; }
+        public virtual bool? ConfigManagerUserConfig { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
@@ -122,7 +123,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: CIM_Key  <br/>
         /// インスタンスの作成で使用されるクラスまたはサブクラスの名前。 クラスの他のキー プロパティと共に使用する場合、このプロパティを使用すると、クラスとそのサブクラスのすべてのインスタンスを一意に識別できます。
         /// </summary>
-        public virtual string CreationClassName { get; }
+        public virtual string? CreationClassName { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
@@ -130,7 +131,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: CIM_Key  <br/>
         /// 論理デバイスに一意の名前を付けるアドレスまたはその他の識別情報。
         /// </summary>
-        public virtual string DeviceID { get; }
+        public virtual string? DeviceID { get; } = null;
 
         /// <summary>
         /// データ型: uint16 配列  <br/>
@@ -153,28 +154,28 @@ namespace NetworkAdapterChecker.Models
         /// 時間指定の電源オンがサポートされています (7)  <br/>
         /// SetPowerState メソッドは、PowerState パラメーターを 5 ("Power Cycle") に設定し、Time パラメーターを特定の日付と時刻または間隔に設定して電源オンを行って呼び出すことができます。
         /// </summary>
-        public virtual UInt16[] PowerManagementCapabilities { get; }
+        public virtual ushort[]? PowerManagementCapabilities { get; } = null;
 
         /// <summary>
         /// データ型: boolean  <br/>
         /// アクセスの種類: 読み取り専用  <br/>
         /// TRUE の場合、LastErrorCode プロパティで報告されたエラーはクリアされます。
         /// </summary>
-        public virtual bool ErrorCleared { get; }
+        public virtual bool? ErrorCleared { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
         /// アクセスの種類: 読み取り専用  <br/>
         /// LastErrorCode プロパティに記録されたエラーと実行する修正アクションに関する情報を提供する自由形式の文字列。
         /// </summary>
-        public virtual string ErrorDescription { get; }
+        public virtual string? ErrorDescription { get; } = null;
 
         /// <summary>
         /// データ型: uint32  <br/>
         /// アクセスの種類: 読み取り専用  <br/>
         /// 論理デバイスによって報告された最後のエラー コード。
         /// </summary>
-        public virtual UInt32 LastErrorCode { get; }
+        public virtual uint? LastErrorCode { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
@@ -183,7 +184,7 @@ namespace NetworkAdapterChecker.Models
         /// 論理デバイスの Win32 プラグ アンド プレイデバイス識別子を示します。  <br/>
         /// 例: "*PNP030b"
         /// </summary>
-        public virtual string PNPDeviceID { get; }
+        public virtual string? PNPDeviceID { get; } = null;
 
         /// <summary>
         /// データ型: ブール値  <br/>
@@ -191,7 +192,7 @@ namespace NetworkAdapterChecker.Models
         /// TRUE の場合、デバイスを電源管理できます。つまり、省電力状態になります。 FALSE の場合、PowerManagementCapabilities 配列の唯一のエントリは整数値 1 ("サポートされていません") である必要があります。  <br/>
         /// このプロパティは、電源管理機能が現在有効になっているか、有効になっているか、どの機能がサポートされているかを示しません。 詳細については、「 PowerManagementCapabilities 配列」を参照してください。
         /// </summary>
-        public virtual bool PowerManagementSupported { get; }
+        public virtual bool? PowerManagementSupported { get; } = null;
 
         /// <summary>
         /// データ型: uint16  <br/>
@@ -204,7 +205,7 @@ namespace NetworkAdapterChecker.Models
         /// 無効 (4)  <br/>
         /// 適用なし (5)
         /// </summary>
-        public virtual UInt16 StatusInfo { get; }
+        public virtual ushort? StatusInfo { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
@@ -212,7 +213,7 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: 伝達 ( "CIM_System。CreationClassName") )、CIM_Key  <br/>
         /// スコープ システムの作成クラス名。
         /// </summary>
-        public virtual string SystemCreationClassName { get; }
+        public virtual string? SystemCreationClassName { get; } = null;
 
         /// <summary>
         /// データ型: string  <br/>
@@ -220,6 +221,6 @@ namespace NetworkAdapterChecker.Models
         /// 修飾子: 伝達 ( "CIM_System。Name") 、CIM_Key  <br/>
         /// スコープ システムの名前。
         /// </summary>
-        public virtual string SystemName { get; }
+        public virtual string? SystemName { get; } = null;
     }
 }

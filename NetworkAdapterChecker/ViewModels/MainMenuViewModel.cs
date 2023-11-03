@@ -5,9 +5,12 @@ namespace NetworkAdapterChecker.ViewModels
 {
     public class MainMenuViewModel : ViewModelBase
     {
+        public MainMenuViewModel(DelegateCommand exportCommand)
+        {
+            ExportCommand = exportCommand;
+        }
 
         private DelegateCommand? appExitCommand;
-
         /// <summary>
         /// アプリを閉じる
         /// </summary>
@@ -15,25 +18,17 @@ namespace NetworkAdapterChecker.ViewModels
         {
             get
             {
-                if (appExitCommand == null)
-                    appExitCommand = new DelegateCommand
-                    {
-                        ExecuteHandler = AppExit_Execute,
-                        CanExecuteHandler = AppExit_CanExecute,
-                    };
+                appExitCommand ??= new DelegateCommand
+                {
+                    ExecuteHandler = (o) => Environment.Exit(0),
+                };
                 return appExitCommand;
             }
         }
 
-        private void AppExit_Execute(object parameter)
-        {
-            Environment.Exit(0);
-        }
-
-
-        private bool AppExit_CanExecute(object parameter)
-        {
-            return true;
-        }
+        /// <summary>
+        /// エクスポート
+        /// </summary>
+        public DelegateCommand ExportCommand { get; }
     }
 }

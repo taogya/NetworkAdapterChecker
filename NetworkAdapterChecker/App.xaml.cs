@@ -1,4 +1,4 @@
-﻿using NetworkAdapterChecker.Settings;
+﻿using NetworkAdapterChecker.Models;
 using NetworkAdapterChecker.Views;
 using System;
 using System.Globalization;
@@ -22,19 +22,25 @@ namespace NetworkAdapterChecker
         /// </summary>
         public class CommandOptions
         {
+            public CommandOptions() : this(new string[0]) { }
+            public CommandOptions(string[] args)
+            {
+                Help = args.Contains("-h");
+            }
+
+            /// <summary>
+            /// ヘルプの表示オプション
+            /// </summary>
             public bool Help { get; private set; } = false;
 
+            /// <summary>
+            /// ヘルプの表示
+            /// </summary>
             public void PrintHelp()
             {
                 Console.WriteLine($"Description of {Name}");
                 Console.WriteLine($"    {Name} [-h]");
                 Console.WriteLine($"        -h: show help.");
-            }
-
-            public CommandOptions() : this(new string[0]) { }
-            public CommandOptions(string[] args)
-            {
-                Help = args.Contains("-h");
             }
         }
 
@@ -83,14 +89,14 @@ namespace NetworkAdapterChecker
             var dictionary = new ResourceDictionary();
             try
             {
-                var uri = GlobalSettings.GetLanguagePath(cultureCode);
+                var uri = GlobalParameter.GetLanguagePath(cultureCode);
                 dictionary.Source = new Uri(uri, UriKind.Relative);
             }
             catch (IOException ex)
             {
                 Console.WriteLine($"Language Uri Error: {ex}");
-                Console.WriteLine($"Used default {GlobalSettings.DefaultCultureCode}.");
-                var uri = GlobalSettings.GetLanguagePath();
+                Console.WriteLine($"Used default {GlobalParameter.DefaultCultureCode}.");
+                var uri = GlobalParameter.GetLanguagePath();
                 dictionary.Source = new Uri(uri, UriKind.Relative);
             }
 
@@ -146,7 +152,7 @@ namespace NetworkAdapterChecker
 
             // 言語設定
             var language = GetLanguage();
-            Resources.MergedDictionaries.Add(language);
+            Resources.MergedDictionaries[0] = language;
 #if PRIVATEDEBUG
             // システムで設定されている言語
             var nowLang = Application.Current.Resources.MergedDictionaries[0];

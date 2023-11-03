@@ -13,6 +13,7 @@ namespace NetworkAdapterChecker.Models
     /// </summary>
     public class CIM_LogicalElement : CIM_ManagedSystemElement
     {
+        public CIM_LogicalElement() { }
         public CIM_LogicalElement(ManagementBaseObject obj) : base(obj) { }
     }
 }
