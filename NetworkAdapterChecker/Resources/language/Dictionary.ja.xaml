@@ -8,4 +8,5 @@
     <system:String x:Key="update">更新</system:String>
     <system:String x:Key="property_name">プロパティ名</system:String>
     <system:String x:Key="property_value">値</system:String>
+    <system:String x:Key="export_failed">エクスポートに失敗しました。</system:String>
 </ResourceDictionary>

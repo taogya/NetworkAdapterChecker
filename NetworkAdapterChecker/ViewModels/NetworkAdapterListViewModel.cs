@@ -1,8 +1,11 @@
-﻿using NetworkAdapterChecker.Models;
+﻿using Microsoft.Win32;
+using NetworkAdapterChecker.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,7 +48,50 @@ namespace NetworkAdapterChecker.ViewModels
 
         private void ExportCommand_Execute(object parameter)
         {
-            MessageBox.Show("csv出力");
+            SaveFileDialog saveFileDialog = new()
+            {
+                AddExtension = true,
+                Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*",
+                DefaultExt = "csv",
+            };
+
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string selectedPath = saveFileDialog.FileName;
+                var properties = NetworkAdapterList.Select((adp) => adp.NetworkAdapter).ToList();
+                if (properties.Count == 0)
+                    return;
+
+                try
+                {
+
+                    using var writer = new StreamWriter(selectedPath, false, Encoding.UTF8);
+                    // ヘッダーの書き込み
+                    List<string> header = new();
+                    foreach (KeyValuePair<string, object?> keyVal in properties[0].MSFT_NetAdapter)
+                        header.Add($"{keyVal.Key}");
+                    writer.WriteLine(string.Join(",", header));
+                    // データの書き込み
+                    foreach (var property in properties)
+                    {
+                        List<string> data = new();
+                        foreach (KeyValuePair<string, object?> keyVal in property.MSFT_NetAdapter)
+                        {
+                            var val = keyVal.Value;
+                            if(val  != null)
+                                val = val.ToString().Contains(",") ? $"\"{val}\"" : val;
+                            data.Add($"{val}");
+                        }
+                        writer.WriteLine(string.Join(",", data));
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show((string)Application.Current.Resources.MergedDictionaries[0]["export_failed"],
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private DelegateCommand? networkAdaptersUpdate = null;

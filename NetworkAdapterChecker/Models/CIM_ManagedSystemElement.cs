@@ -13,7 +13,7 @@ namespace NetworkAdapterChecker.Models
     /// </summary>
     public class CIM_ManagedSystemElement : IEnumerable
     {
-        const string DELIMITER = ", ";
+        const string DELIMITER = "|";
         
         public CIM_ManagedSystemElement() { }
 
@@ -73,7 +73,8 @@ namespace NetworkAdapterChecker.Models
                     else if (val is string[] string_v)
                         val = string.Join(DELIMITER, string_v);
                     else
-                        val = string.Join(DELIMITER, val);
+                        val = string.Join(DELIMITER, val) + "]";
+                    val = $"[{val}]";
                 }
                 ret.Add(new(obj.Name, val));
             }
