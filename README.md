@@ -1,12 +1,11 @@
-# NetworkAdapterChecker
-
-
 # 概要 (Summary)
 Windowsで動作する，ネットワークアダプタ確認用画面。<br>
 Network adapter confirmation screen for Windows.
 
 # 使い方 (How To Use)
 ## Version 1.0.0
+![HowToUse_Version1.0.0](NetworkAdapterChecker/Resources/HowToUse.gif)
+
 1. アプリを起動します。<br>
   Launch the app.
 1. 現在有効なネットワークアダプタの一覧が、左側に表示されます。<br>
