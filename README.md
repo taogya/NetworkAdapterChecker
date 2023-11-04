@@ -2,6 +2,9 @@
 Windowsで動作する，ネットワークアダプタ確認用画面。<br>
 Network adapter confirmation screen for Windows.
 
+MSFT_NetAdapter classで定義されているデータを確認できます。<br>
+You can check the properties defined in the MSFT_NetAdapter class.
+
 # 使い方 (How To Use)
 ## Version 1.0.0
 ![HowToUse_Version1.0.0](NetworkAdapterChecker/Resources/HowToUse.gif)
