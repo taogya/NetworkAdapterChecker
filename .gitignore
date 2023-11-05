@@ -3,5 +3,6 @@ NetworkAdapterChecker/obj
 NetworkAdapterChecker/bin
 
 NetworkAdapterCheckerInstaller/Release
+NetworkAdapterCheckerInstaller/Debug
 
 *.user
